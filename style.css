@@ -66,3 +66,9 @@ button:hover{
 .task>div{
     width: 100%;
 }
+h1{
+    margin: 20px;
+    font: 3rem;
+    text-align: center;
+    color: black;
+}

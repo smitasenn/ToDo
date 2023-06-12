@@ -2,7 +2,8 @@ const title=document.getElementById("title");
 const desc=document.getElementById("description");
 const form =document.querySelector("form");
 const container =document.querySelector(".container");
-const tasks=[];
+const tasks=localStorage.getItem("tasks")?JSON.parse(localStorage.getItem("tasks")):[];
+show();
 
 function show()
 {
@@ -25,6 +26,7 @@ function show()
         btn.addEventListener("click",()=>{
             removeTask();
             tasks.splice(index,1);
+            localStorage.setItem("tasks",JSON.stringify(tasks));
             show();
         });
         div.append(btn);
@@ -42,12 +44,14 @@ function removeTask()
     }
 }
 form.addEventListener("submit",(e)=>{
-    e.preventDefault();
+    //e.preventDefault();
     removeTask();
     tasks.push({
         title:title.value,
         desc:desc.value
     });
+    
+    localStorage.setItem("tasks",JSON.stringify(tasks));
     show();
    
 
